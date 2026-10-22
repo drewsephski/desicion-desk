@@ -1,0 +1,39 @@
+{
+  "name": "decision-desk",
+  "version": "0.0.0",
+  "type": "module",
+  "imports": {
+    "#*": "./agent/*",
+    "#evals/*": "./evals/*"
+  },
+  "scripts": {
+    "build": "pnpm build:eve && pnpm build:web",
+    "build:eve": "eve build",
+    "build:web": "next build --turbopack apps/web",
+    "dev": "next dev apps/web",
+    "dev:eve": "eve dev",
+    "dev:all": "vercel dev --local",
+    "dev:local": "trap 'kill 0' EXIT; eve dev --no-ui --port 2000 & EVE_DEV_ORIGIN=http://127.0.0.1:2000 next dev apps/web",
+    "dev:web": "next dev apps/web",
+    "typecheck": "tsc -p apps/web/tsconfig.json"
+  },
+  "dependencies": {
+    "@comark/react": "0.6.2",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
+    "ai": "7.0.128",
+    "eve": "^0.73.0",
+    "geist": "1.7.2",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "~26.2.0",
+    "@types/react": "~19.2.15",
+    "@types/react-dom": "~19.2.3",
+    "microsandbox": "^0.5.10",
+    "typescript": "7.0.2"
+  },
+  "packageManager": "pnpm@11.25.0"
+}
